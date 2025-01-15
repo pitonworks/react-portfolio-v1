@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextDecrypt } from "./TextDecrypt";
+import Typewriter from 'typewriter-effect';
 import Resume from "../../settings/resume.json";
 import { FirstName, LastName } from "../../utils/getName";
 
@@ -31,11 +32,18 @@ export const Content = () => {
     <Container component="main" className={classes.main} maxWidth="md">
       <div className={classes.heading}>
         <Typography variant="h5" component="h2">
-            <TextDecrypt text={`${FirstName} ${LastName}`} />
+          <TextDecrypt text={`${FirstName} ${LastName}`} />
         </Typography>
         <Typography variant="h1" component="h1" className={classes.jobs}>
-            <TextDecrypt text={`${Resume.basics.job1} + `} />
-            <TextDecrypt text={`${Resume.basics.job2}`} />
+          <Typewriter
+            options={{
+              strings: [`${Resume.basics.job1} + `, `${Resume.basics.job2}`],
+              autoStart: true,
+              loop: true,
+              deleteSpeed: 50,
+              delay: 50
+            }}
+          />
         </Typography>
       </div>
     </Container>
